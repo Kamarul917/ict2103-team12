@@ -1,0 +1,258 @@
+*{
+    margin:0;
+    padding:0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/*Initialisation styling*/
+h1, h2, h3, h4, h5, h6, p{
+
+}
+
+
+h1{
+
+}
+
+h2{
+
+}
+
+h3{
+
+}
+
+h4{
+
+}
+
+h5{
+
+}
+
+h6{
+    font-weight: 700;
+}
+
+main{
+    color:#f4f4f4;
+    background-color: #222222;
+}
+
+body{
+    padding-top: 151px;
+}
+
+/*Navigation styles*/
+.navbar{
+    padding: 0 32px 0 32px;
+    letter-spacing: 0.8px;
+    transition: all 0.4s;  
+    background-color:#222222;
+}
+
+.introtext{
+    padding-top: 200px;
+}
+.nav-item{
+    font-size: 14px;
+    font-weight: 600;
+    padding-left:16px;
+    text-transform: uppercase;
+}
+
+.dropdown-item {
+    font-size: 14px;
+}
+
+.dropdown-item:active{
+    background-color: #FCCB12;
+    color:#222222;
+}
+
+.navbar-dark 
+.navbar-nav .nav-link{
+    color: #f4f4f4;
+}
+
+.navbar-brand img{
+    max-width: 300px;
+}
+
+.navbar-dark 
+.navbar-nav 
+.nav-item 
+.nav-link:hover{
+    color:#fccb12;
+}
+
+#navTickets-btn{
+    background-color: #FCCB12;
+    color: #222222;
+    display:inline-block;
+    padding: 0.6em 0.8em;
+    border:none;
+    border-radius: 1px;
+    font-weight: 600;
+    font-size:95%;
+    letter-spacing: 0.4px;
+
+}  
+#navTickets-btn:hover{
+    background-color: #D1A413;
+    color: #222222;
+}
+
+#loginIcon{
+    padding:0 0 0 8px;
+}      
+
+/* remove navbar button stying */
+.navbar-toggler{
+    background: none;
+    border: none;
+    padding:0;
+}
+
+/* Change navbar styling on scroll */
+
+/*--------------------*/
+
+/*Remaining styles*/
+#hero-carousel1, #hero-carousel2, #hero-carousel3, #hero-carousel4 {
+    height: 60vh;
+    min-height: 350px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.hero-container figure img{
+    position: absolute;
+    margin: 0;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.flipdown{
+    top: 50%;
+    left:50%;
+    z-index:10;
+    /*transform: translate(-50%, -50%);*/
+}
+
+.info-col{  
+    height: auto;
+    padding: 32px 16px 32px 16px;
+    text-align: center;
+}
+
+.col-cta{
+    background-color: #222222;
+    padding: 8px 16px 8px 16px;
+    color: #FCCB12;
+    border:2px solid #FCCB12;
+    border-radius: 1px;
+    font-weight: 600;
+}   
+.col-cta:hover{
+    background-color: #FCCB12;
+    color: #222222;
+    border:2px solid #FCCB12;
+}
+
+.spotifyEmbed{
+    border: 0; 
+    width: 100%;    
+    height: 60vh;
+}
+
+#loading img{
+    max-height:20%;
+    position: absolute;
+    margin: 0;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.partners-col img{
+    height: 70px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}   
+
+/*-------------*/
+
+/*Footer styles*/
+.footer-main{
+    padding: 16px 16px 16px 16px;
+    font-weight: 500;
+    background-color:#fccb12;
+    color:#222222;
+}
+
+footer a{
+    color: #222222;
+}
+
+.footer-social-links a{
+    font-size:1.4em;
+}
+
+footer a:hover{
+    color:#A0151F;
+    text-decoration: none;
+}
+
+.footer-links{
+    margin-top:16px;
+    line-height:16px;
+}
+.footer-copyright{
+    background-color:#222222;
+    color: #f4f4f4;
+    font-size:12px;
+}
+
+/* Media Queries */
+@media (max-width: 991.98px) {
+
+    /*Disable transparent nav on small devices*/
+    .navbar {
+        background: #222222;
+    }
+
+    .nav-item{
+        line-height: 24px;
+        margin:0;
+        padding:0;
+    }
+
+    #loginIcon{
+        padding:0;
+    }
+} 
+
+@media (max-width: 768px) {
+    #col-playlist h2{
+        padding-top: 24px;
+    }
+
+    #col-playlist p{
+        padding-bottom: 24px;
+        margin:0;
+    }
+}
+
+@media (max-width: 600px) {
+    #info-col{  
+        margin:auto;
+        height:auto;
+        padding: 36px 16px 36px 16px;
+    } 
+}  
