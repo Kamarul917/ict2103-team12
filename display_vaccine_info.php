@@ -6,17 +6,18 @@
     //     $iso_code = $_POST['iso_code'];
     // }
 
-    $stmt = $conn->prepare("SELECT country_name, serious_cases, death_cases, active_cases, population FROM covid_data, country 
-    WHERE covid_data.iso_code = country.iso_code and covid_data.iso_code = 'SGP' ");
+    $stmt = $conn->prepare("SELECT total_vaccination, fully_vaccination, country_name, population, vaccine_used FROM vaccination_status,
+    country, country_vaccine WHERE vaccination_status.iso_code = country.iso_code AND country_vaccine.iso_code = country.iso_code
+    AND webdb.country.iso_code = 'SGP' order by date desc limit 1;");
     //$stmt->bind_param("s", $iso_code);
     $stmt->execute();
     $result = $stmt->get_result();
     $row = $result->fetch_assoc();
 
-    $serious_cases = $row["serious_cases"];
+    $total_vaccination = $row["total_vaccination"];
     $country_name = $row["country_name"];
-    $death_cases = $row["death_cases"];
-    $active_cases = $row["active_cases"];
+    $fully_vaccination = $row["fully_vaccination"];
+    $vaccine_used = $row["vaccine_used"];
     $population = $row["population"];
 
     function sigFig($value, $digits){
@@ -32,10 +33,8 @@
     return $answer;
     }
 
-    $percentOfPopulationInfected = sigFig((($active_cases + $serious_cases) / $population * 100), 3);
-    $ratioOfSeriousToActive = sigFig((($serious_cases/$active_cases) * 100), 3);
-
-
+    $fullyvaccinationRate = sigFig(($fully_vaccination / $population * 100), 3);
+    $partialvaccinationRate = sigFig((($total_vaccination-$fully_vaccination) / $population * 100), 3);
     //global $errorMsg, $dbhost, $dbaccount, $dbpw, $db;
 
     //set the db connection info here
@@ -99,7 +98,7 @@
             <div class="align-self-center">
                 <div class="col-lg-12 col-md-12 my-4 align-self-center">
                     <div class="d-flex justify-content-center">
-                        <h2><?php echo $country_name; ?> Case Information</h2>
+                        <h2><?php echo $country_name; ?> Vaccination Information</h2>
                     </div>
                     <br>
                     <table class = "table table-dark table-hover">
@@ -107,24 +106,24 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <th scope="row">Total Number of Cases: </th>
-                                <td> <?php echo $active_cases; ?> </td>
+                                <th scope="row">Total Number of People Vaccinated: </th>
+                                <td> <?php echo $total_vaccination; ?> </td>
                             </tr>
                             <tr>
-                                <th scope="row">Serious Cases: </th>
-                                <td> <?php echo $serious_cases; ?> </td>
+                                <th scope="row">Total Number of People Fully Vaccinated: </th>
+                                <td> <?php echo $fully_vaccination; ?> </td>
                             </tr>
                             <tr>
-                                <th scope="row">Death Cases: </th>
-                                <td> <?php echo $death_cases; ?> </td>
+                                <th scope="row">Fully Vaccination Rate: </th>
+                                <td> <?php echo $fullyvaccinationRate; ?>%</td>
                             </tr>
                             <tr>
-                                <th scope="row">Percentage of population infected: </th>
-                                <td> <?php echo $percentOfPopulationInfected; ?> </td>
+                                <th scope="row">Partial Vaccination Rate: </th>
+                                <td> <?php echo $partialvaccinationRate; ?>%</td>
                             </tr>
                             <tr>
-                                <th scope="row">Ratio of serious case to active case: </th>
-                                <td> <?php echo $ratioOfSeriousToActive; ?> </td>
+                                <th scope="row">Vaccines Used: </th>
+                                <td> <?php echo $vaccine_used; ?> </td>
                             </tr>
                         </tbody>
                     </table>
