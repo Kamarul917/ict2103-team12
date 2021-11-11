@@ -45,9 +45,9 @@ include 'config.php';
                 </div>
             </form>-->
             <div class="card-body">
-                                <form action="process_login.php" method="post">
+                <form action="process_index.php" method="post">
                                     <div class="form-group">
-                                        <label for="country">Select a Country:</label>
+                                        <label for="country" class='align-self-center'>Select a Country:</label>
                                         <select id="country" name="country" class="form-control" aria-label="country">
                                             <option value="none">Select</option>
                                                 <?php
@@ -59,13 +59,14 @@ include 'config.php';
                                                 ?>
                                         </select>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" style="text-align: center; margin-top: 80px;">
                                         <button type="submit" value="submit" class="btn btn-primary btn-block text-uppercase account-btn">Let's Go</button>
                                     </div> <!-- form-group// -->                                               
-                                </form>
-                            </div> <!-- card-body end .// -->
-            <?php include "templates/footer.inc.php"; ?>
+                </form>
+            </div> <!-- card-body end .// -->
+            
         </main>
+        <?php include "templates/footer.inc.php"; ?>
     </body>
 </html>
 
