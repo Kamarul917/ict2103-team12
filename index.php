@@ -1,19 +1,5 @@
-<?php phpinfo(); ?>
 <?php
-$servername = "db.infernodragon.cloud"; // Your database server name
-$username = "webdbuser"; // Your database user name which you use to connect
-$password = "wdbRW123!@#"; // Your database password
-$database = "webdb";
-
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $database);
-
-// Check connection
-if (!$conn) {
-    //die("Connection failed: " . mysqli_connect_error());
-    echo "Failed connection";
-}
-echo "Connected successfully";
+include 'config.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -80,10 +66,14 @@ echo "Connected successfully";
                         </div>
                         <div style="text-align: center; margin-top: 30px;">
                         <select name="country" id="country">
-                            <option value="Singapore">Singapore</option>
-                            <option value="Malaysia">Malaysia</option>
-                            <option value="Indonesia">Indonesia</option>
-                            <option value="Philippines">Philippines</option>
+                            <option>Select</option>
+                            <?php
+                                $sqli = "SELECT * FROM country";
+                                $result = mysqli_query($conn, $sqli);
+                                while ($row = mysqli_fetch_array($result)) {
+                                    echo '<option value="'.$row['iso_code'].'">'.$row['country_name'].'</option>';
+                                }
+                            ?>
                         </select>
                         </div>
                         <div style="text-align: center; margin-top: 80px;">

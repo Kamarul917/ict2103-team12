@@ -1,5 +1,5 @@
 <?php
-$servername = "http://db.infernodragon.cloud"; // Your database server name
+$servername = "db.infernodragon.cloud"; // Your database server name
 $username = "webdbuser"; // Your database user name which you use to connect
 $password = "wdbRW123!@#"; // Your database password
 $database = "webdb";
@@ -11,5 +11,5 @@ $conn = mysqli_connect($servername, $username, $password, $database);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-echo "Connected successfully";
+//echo "Connected successfully";
 ?>

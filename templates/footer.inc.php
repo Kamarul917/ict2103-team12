@@ -4,8 +4,9 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-12 col-md-12">
-            <h6>About</h6>
-            <p class="text-justify">Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> is an initiative  to help the upcoming programmers with the code. Scanfcode focuses on providing the most efficient.</p>
+            <h6>ICT2103 - Team 12</h6>
+            <p class="text-justify"><i>iCovidTravel</i> is a school project on ICT2103 - Information Management. It will be used to provide people with a guideline for safe traveling. 
+                <br>Team Members: Kamarullah (2002773), Lim Zheng Jie (2000627), Shawn Lim (2001544), Ang Wei Jie (2002124), Teo Nian Kiat (2001373)</p>
           </div>
         </div>
         <hr>
@@ -13,8 +14,8 @@
       <div class="container">
         <div class="row">
           <div class="col-md-8 col-sm-6 col-xs-12">
-            <p class="copyright-text">Copyright &copy; 2017 All Rights Reserved by 
-         <a href="#">Scanfcode</a>.
+            <p class="copyright-text">Copyright &copy; 2021 All Rights Reserved by 
+         <a href="#">ICT2103 - Team 12</a>.
             </p>
           </div>
 
