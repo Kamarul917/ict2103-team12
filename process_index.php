@@ -54,23 +54,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class='form-group'>
                             <a><?php echo $cName. " "?> is safe/unsafe.</a><br>
                                 <label for="function1" class='align-self-center'>Select a Function:</label>
-                                <select id='function1' name='function1' class='form-control' aria-label='function1'>
-                                    <option value="1">View Information</option>
-                                    <option value="2">View Graph</option>
+                                <select id='slct1' name='slct1' class='form-control' aria-label='slct1' onchange="populate(this.id, 'slct2')">
+                                    <option value="">Select a function</option>
+                                    <option value="info">View Information</option>
+                                    <option value="graph">View Graph</option>
                                 </select>
-                                <select id='function2' name='function2' class='form-control' aria-label='function2' style="margin-top: 80px">
-                                    <option value="3">Daily Vaccination Graph</option>
+                                <select id='slct2' name='slct2' class='form-control' aria-label='slct2' style="margin-top: 20px">
+<!--                                    <option value="3">Daily Vaccination Graph</option>
                                     <option value="4">Active Case Graph</option>
                                     <option value="5">Serious Cases and Death Graph</option>
                                     <option value="6">All Information</option>
                                     <option value="7">Vaccination %</option>
                                     <option value="8">Active Cases to Total Population</option>
                                     <option value="9">Serious Cases to Active Cases</option>
-                                    <option value="10">Vaccines Offered</option>
+                                    <option value="10">Vaccines Offered</option>-->
                                 </select>
                         </div>
                         <div class="form-group" style="text-align: center; margin-top: 10px;">
-                            <button type="submit" value="submit" class="btn btn-primary btn-block text-uppercase account-btn">Let's Go</button>
+                            <a class="btn btn-danger text-uppercase mt-2 delete-btn" href="index.php">Select Another Country</a>
+                            <button type="submit" value="submit" class="btn btn-primary mt-2 text-uppercase proceed-btn">Let's Go</button>
                         </div> <!-- form-group// -->
                     </form>
                 </div>
@@ -84,6 +86,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
             ?>
             <hr>
+            <script>
+            
+            function populate(select1,select2)
+            {
+                var s1 = document.getElementById(select1);
+                var s2 = document.getElementById(select2);
+                
+                s2.innerHTML = "";
+                
+                if(s1.value == "info")
+                {
+                    var optionArray = ['3|All Information', '4|Vaccination %', '3|Active Cases to Total Population', '4|Serious Cases to Active Cases', '5|Vaccines Offered'];
+                }
+                else if(s1.value == 'graph')
+                {
+                    var optionArray = ['6|Daily Vaccination Graph', '7|Active Cases Graph', '8|Serious Cases and Death Graph'];
+                }
+                
+                for(var option in optionArray)
+                {
+                    var pair = optionArray[option].split("|");
+                    var newoption = document.createElement("option");
+                    
+                    newoption.value = pair[0];
+                    newoption.innerHTML=pair[1];
+                    s2.options.add(newoption);
+                }
+            }
+            </script>
         </main>
         <?php
         include "templates/footer.inc.php";
@@ -94,5 +125,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 background-color: #222222;
             }
         </style>-->
+        
         </body>
 </html>  
