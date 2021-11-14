@@ -1,0 +1,95 @@
+body{
+    background-color: #222222;
+    color: #f4f4f4;
+}
+
+.card{
+    color: #222222;
+}
+
+.account-btn{
+    background-color: #FCCB12;
+    color: #222222;
+    padding: 0.8em 0.8em;
+    border:none;
+    border-radius: 1px;
+    font-weight: 600;
+    font-size:95%;
+    letter-spacing: 0.4px;
+}
+
+.account-btn:hover{
+    background-color: #D1A413;
+    color: #222222;
+}
+
+a{
+    color:#4d4d4d;
+    font-weight:600;
+}
+
+a:hover{
+    color:#222222;
+    text-decoration: none;
+}
+
+.delete-btn{
+    background-color: #d11313;
+    color: #FFFFFF;
+    padding: 0.8em 0.8em;
+    border:none;
+    border-radius: 1px;
+    font-weight: 600;
+    font-size:95%;
+    letter-spacing: 0.4px;
+}
+
+.delete-btn:hover{
+    background-color: #a80f0f;
+    color: #FFFFFF;
+}
+
+.cancel-btn{
+    color: #FFFFFF !important;
+    padding: 0.8em 0.8em;
+    border:none;
+    border-radius: 1px;
+    font-weight: 600;
+    font-size:95%;
+    letter-spacing: 0.4px;
+}
+
+.modal-content{
+    color: #222222;
+}
+
+/*register validation*/
+#popover-password{
+    font-size:14px;
+}
+
+.progress {
+    height: 10px;
+}   
+
+.progress-bar-success{
+    background-color:green;
+}
+
+.progress-bar-warning{
+    background-color:orange;
+}
+
+.progress-bar-danger{
+    background-color:#E00000;
+}
+
+/*!important tag is used to override bootstrap styling*/
+.btn.disabled, .btn:disabled{
+    border-radius: 0 !important;
+    color: #222222 !important;
+    background-color: #B0B0B0 !important;
+    cursor:not-allowed !important;
+    opacity:100% !important;
+
+}
