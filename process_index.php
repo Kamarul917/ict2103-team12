@@ -16,6 +16,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
+if (isset($_GET['next'])){
+    $iso = $_GET['next'];
+}
+
     $stmt = $conn->prepare("SELECT * FROM country WHERE iso_code = ?");
     $stmt->bind_param("s", $iso);
     $stmt->execute();
@@ -73,6 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
                         <div class="form-group" style="text-align: center; margin-top: 10px;">
                             <a class="btn btn-danger text-uppercase mt-2 delete-btn" href="index.php">Select Another Country</a>
+                            <input type ="hidden" id="iso_code" name="iso_code" value="<?php echo $iso; ?>">
                             <button type="submit" value="submit" class="btn btn-primary mt-2 text-uppercase proceed-btn">Let's Go</button>
                         </div> <!-- form-group// -->
                     </form>
@@ -98,7 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 
                 if(s1.value == "info")
                 {
-                    var optionArray = ['3|All Information', '4|Vaccination %', '3|Active Cases to Total Population', '4|Serious Cases to Active Cases', '5|Vaccines Offered'];
+                    var optionArray = ['3|All Information', '4|Vaccination %', '3|Active Cases to Total Population', '4|Serious Cases to Active Cases', '4|Vaccines Offered'];
                 }
                 else if(s1.value == 'graph')
                 {

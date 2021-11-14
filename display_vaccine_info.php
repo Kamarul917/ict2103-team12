@@ -1,15 +1,14 @@
 <?php
     include 'config.php';
 
-    // if(isset($_POST['iso_code']))
-    // {
-    //     $iso_code = $_POST['iso_code'];
-    // }
+    if (isset($_GET['next'])){
+        $iso_code = $_GET['next'];
+    }
 
     $stmt = $conn->prepare("SELECT total_vaccination, fully_vaccination, country_name, population, vaccine_used FROM vaccination_status,
     country, country_vaccine WHERE vaccination_status.iso_code = country.iso_code AND country_vaccine.iso_code = country.iso_code
-    AND webdb.country.iso_code = 'SGP' order by date desc limit 1;");
-    //$stmt->bind_param("s", $iso_code);
+    AND webdb.country.iso_code = ? order by date desc limit 1;");
+    $stmt->bind_param("s", $iso_code);
     $stmt->execute();
     $result = $stmt->get_result();
     $row = $result->fetch_assoc();
@@ -128,6 +127,7 @@
                         </tbody>
                     </table>
                     <div class="d-flex justify-content-center">
+                        <a href="process_index.php?next=<?php echo $iso_code; ?>" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Back</a>
                         <a href="index.php" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Home</a>
                     </div>
                 </div>

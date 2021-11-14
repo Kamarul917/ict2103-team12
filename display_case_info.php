@@ -1,14 +1,13 @@
 <?php
     include 'config.php';
 
-    // if(isset($_POST['iso_code']))
-    // {
-    //     $iso_code = $_POST['iso_code'];
-    // }
+    if (isset($_GET['next'])){
+        $iso_code = $_GET['next'];
+    }
 
     $stmt = $conn->prepare("SELECT country_name, serious_cases, death_cases, active_cases, population FROM covid_data, country 
-    WHERE covid_data.iso_code = country.iso_code and covid_data.iso_code = 'SGP' ");
-    //$stmt->bind_param("s", $iso_code);
+    WHERE covid_data.iso_code = country.iso_code and covid_data.iso_code = ? ");
+    $stmt->bind_param("s", $iso_code);
     $stmt->execute();
     $result = $stmt->get_result();
     $row = $result->fetch_assoc();
@@ -129,6 +128,7 @@
                         </tbody>
                     </table>
                     <div class="d-flex justify-content-center">
+                        <a href="process_index.php?next=<?php echo $iso_code; ?>" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Back</a>
                         <a href="index.php" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Home</a>
                     </div>
                 </div>

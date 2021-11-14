@@ -15,6 +15,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $selFunc = ($_POST["slct2"]);
     }
 }
+
+if(isset($_POST['iso_code'])) {
+        $iso_code = $_POST['iso_code'];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,13 +40,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($success) {
                 switch ($selFunc){
                     case 3:
-                        header("location: display_case_info.php");
+                        header("location: display_case_info.php?next=$iso_code");
                         break;
                     case 4:
-                        header("location: display_vaccine_info.php");
+                        header("location: display_vaccine_info.php?next=$iso_code");
                         break;
                     default:
-                        header("location: display_case_info.php");
+                        header("location: display_case_info.php?next=$iso_code");
                 }
 //          
                 
@@ -66,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 
                 if(s1.value == "info")
                 {
-                    var optionArray = ['3|All Information', '4|Vaccination %', '3|Active Cases to Total Population', '4|Serious Cases to Active Cases', '5|Vaccines Offered'];
+                    var optionArray = ['3|All Information', '4|Vaccination %', '3|Active Cases to Total Population', '4|Serious Cases to Active Cases', '4|Vaccines Offered'];
                 }
                 else if(s1.value == 'graph')
                 {
