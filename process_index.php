@@ -60,14 +60,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <option value="graph">View Graph</option>
                                 </select>
                                 <select id='slct2' name='slct2' class='form-control' aria-label='slct2' style="margin-top: 20px">
-<!--                                    <option value="3">Daily Vaccination Graph</option>
-                                    <option value="4">Active Case Graph</option>
-                                    <option value="5">Serious Cases and Death Graph</option>
-                                    <option value="6">All Information</option>
-                                    <option value="7">Vaccination %</option>
-                                    <option value="8">Active Cases to Total Population</option>
-                                    <option value="9">Serious Cases to Active Cases</option>
-                                    <option value="10">Vaccines Offered</option>-->
+                                    <option value ="none"
+<!--                                    <option value="DVG">Daily Vaccination Graph</option>
+                                    <option value="ACG">Active Case Graph</option>
+                                    <option value="SCDG">Serious Cases and Death Graph</option>
+                                    <option value=1>All Information</option>
+                                    <option value=2>Vaccination %</option>
+                                    <option value="ACTP">Active Cases to Total Population</option>
+                                    <option value="SCAC">Serious Cases to Active Cases</option>
+                                    <option value="VO">Vaccines Offered</option>-->
                                 </select>
                         </div>
                         <div class="form-group" style="text-align: center; margin-top: 10px;">
@@ -90,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
             function populate(select1,select2)
             {
-                var s1 = document.getElementById(select1);
+                    var s1 = document.getElementById(select1);
                 var s2 = document.getElementById(select2);
                 
                 s2.innerHTML = "";

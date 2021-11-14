@@ -129,7 +129,7 @@
                         </tbody>
                     </table>
                     <div class="d-flex justify-content-center">
-                        <a href="index.php" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Back</a>
+                        <a href="index.php" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Home</a>
                     </div>
                 </div>
             </div>
