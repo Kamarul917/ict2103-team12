@@ -13,6 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $success = false;
     } else {
         $selFunc = ($_POST["slct2"]);
+        echo "$selFuc";
     }
 }
 
@@ -45,10 +46,17 @@ if(isset($_POST['iso_code'])) {
                     case 4:
                         header("location: display_vaccine_info.php?next=$iso_code");
                         break;
+                    case 6:
+                        header("location: display_daliy_vaccine_graph.php?next=$iso_code");
+                        break;
+                    case 8:
+                        header("location: display_death_serious_graph.php?next=$iso_code");
+                        break;
                     default:
                         header("location: display_case_info.php?next=$iso_code");
                 }
-//                 
+//      
+                
               } else { 
                 echo "<?php include 'templates/intro1.inc.php'; ?>";
                 echo "<h2>Oops!</h2>";
