@@ -48,8 +48,7 @@ if(isset($_POST['iso_code'])) {
                     default:
                         header("location: display_case_info.php?next=$iso_code");
                 }
-//          
-                
+//                 
               } else { 
                 echo "<?php include 'templates/intro1.inc.php'; ?>";
                 echo "<h2>Oops!</h2>";
