@@ -83,7 +83,7 @@
                                         <option value="none">Select</option>
                                         <?php
                                             $sqli = "SELECT * FROM country";
-                                            $result = mysqli_query($conn, $sqli);
+                                            $result = mysqli_query($con1, $sqli);
                                             while ($row = mysqli_fetch_array($result)) {
                                                 echo '<option value="'.$row['iso_code'].'">'.$row['country_name'].'</option>';
                                             }
