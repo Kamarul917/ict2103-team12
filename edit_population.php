@@ -75,6 +75,7 @@
                         </div>
                         <br>
                         <div class="d-flex justify-content-center">
+                            <input type="submit" id="name-submit" value="Grab">
                             <form action="edit_population_process.php" method="post">
                                 <div class="form-group">
                                     <label for="country">Select a Country:</label>
@@ -135,6 +136,8 @@
                 </div>
             </div>
             <?php include "templates/footer.inc.php"; ?>
+            <script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+            <script src="js/global.js"></script>
         </main>
     </body>
 </html>
