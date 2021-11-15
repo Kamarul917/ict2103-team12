@@ -48,7 +48,7 @@
 
         <script>
             function checkempty(){
-                if(document.getElementById("population").value.length == 0){
+                if(document.getElementById("country").value.length == 0 || document.getElementById("date").value.length == 0 || document.getElementById("total_vaccination").value.length == 0 || document.getElementById("fully_vaccinated").value.length == 0){
                     $("#apply").attr("data-toggle", "modal");
                     $("#apply").attr("data-target", "#ModalCenter2");
                 }
@@ -71,19 +71,19 @@
                 <div class="align-self-center">
                     <div class="col-lg-12 col-md-12 my-4 align-self-center">
                         <div class="d-flex justify-content-center">
-                            <h2>Edit Population</h2>
+                            <h2>Insert new vaccination data</h2>
                         </div>
                         <br>
                         <div class="d-flex justify-content-center">
-                            <input type="submit" id="name-submit" value="Grab">
-                            <form action="edit_population_process.php" method="post">
+                            <!-- <input type="submit" id="name-submit" value="Grab"> -->
+                            <form action="insert_vaccination_status_process.php" method="post">
                                 <div class="form-group">
-                                    <label for="country">Select a Country:</label>
+                                    <label for="country">Select the Country:</label>
                                     <select id="country" name="country" class="form-control" aria-label="country">
                                         <option value="none">Select</option>
                                         <?php
                                             $sqli = "SELECT * FROM country";
-                                            $result = mysqli_query($con1, $sqli);
+                                            $result = mysqli_query($conn, $sqli);
                                             while ($row = mysqli_fetch_array($result)) {
                                                 echo '<option value="'.$row['iso_code'].'">'.$row['country_name'].'</option>';
                                             }
@@ -92,11 +92,22 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <input type = "text" class="form-control" name="population" id="population" placeholder="Enter new population">
+                                    <label for="date">Select the date:</label>
+                                    <input type = "date" class="form-control" name="date" id="date" placeholder="dd-mm-yyyy" value="">
                                 </div>
 
                                 <div class="form-group">
-                                    <button type="button" onclick="checkempty()" class="btn btn-success" id="apply" name="apply">Apply</button>  
+                                    <label for="total_vaccination">Total Vaccination:</label>
+                                    <input type = "text" class="form-control" name="total_vaccination" id="total_vaccination">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="fully_vaccinated">Total fully Vaccinated:</label>
+                                    <input type = "text" class="form-control" name="fully_vaccinated" id="fully_vaccinated">
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="button" onclick="checkempty()" class="btn btn-success" id="apply" name="apply">Insert</button>  
                                 </div>
 
                                 <br>
@@ -121,7 +132,7 @@
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-body" style="background-color:#222222">
-                                                <a>Please fill in the field and choose a country</a>
+                                                <a>Please fill in all the field</a>
                                             </div>
                                             <div class="modal-footer" style="background-color:#222222">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Dismiss</button>

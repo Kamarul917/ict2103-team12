@@ -1,11 +1,11 @@
 <?php
-    include 'config.php';
+    include 'db/connect.php';
 
     if (isset($_GET['next'])){
         $iso_code = $_GET['next'];
     }
 
-    $stmt = $conn->prepare("SELECT total_vaccination, fully_vaccination, country_name, population, vaccine_used FROM vaccination_status,
+    $stmt = $con1->prepare("SELECT total_vaccination, fully_vaccination, country_name, population, vaccine_used FROM vaccination_status,
     country, country_vaccine WHERE vaccination_status.iso_code = country.iso_code AND country_vaccine.iso_code = country.iso_code
     AND webdb.country.iso_code = ? order by date desc limit 1;");
     $stmt->bind_param("s", $iso_code);

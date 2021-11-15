@@ -1,11 +1,11 @@
 <?php
-    include 'config.php';
+    include 'db/connect.php';
 
     if (isset($_GET['next'])){
         $iso_code = $_GET['next'];
     }
 
-    $stmt = $conn->prepare("SELECT country_name, serious_cases, death_cases, active_cases, population FROM covid_data, country 
+    $stmt = $con1->prepare("SELECT country_name, serious_cases, death_cases, active_cases, population FROM covid_data, country 
     WHERE covid_data.iso_code = country.iso_code and covid_data.iso_code = ? ");
     $stmt->bind_param("s", $iso_code);
     $stmt->execute();

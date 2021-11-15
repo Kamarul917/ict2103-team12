@@ -8,22 +8,31 @@
         return $data;
     }
 
-    if(isset($_POST['population'])){
-        $population = sanitize_input($_POST["population"]);
-    }
-
-    if(isset($_POST['population'])){
+    if(isset($_POST['country'])){
         $country = sanitize_input($_POST["country"]);
     }
 
-    if(!empty($population) && !empty($country)){
-        $sqli = "UPDATE country SET population = '$population' WHERE iso_code = '$country'";
-        mysqli_query($con1, $sqli);
+    if(isset($_POST['date'])){
+        $date = sanitize_input($_POST["date"]);
+        $myDateTime = DateTime::createFromFormat('Y-m-d', $date);
+        $formatteddate = $myDateTime->format('d-m-Y');
     }
-    else{
-        $errormsg = "Please put a number for population of the country";
+
+    if(isset($_POST['total_vaccination'])){
+        $total_vaccination = sanitize_input($_POST["total_vaccination"]);
     }
+
+    if(isset($_POST['fully_vaccinated'])){
+        $fully_vaccinated = sanitize_input($_POST["fully_vaccinated"]);
+    }
+
+    if(!empty($date) && !empty($fully_vaccinated) && !empty($total_vaccination) && !empty($country)) { 
+        $mysqli = "INSERT INTO vaccination_status (iso_code, date, total_vaccination, fully_vaccination) VALUES ('$country', '$date', '$total_vaccination', '$fully_vaccinated');";
+        (mysqli_query($con1, $mysqli));
+    }
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -78,21 +87,23 @@
             </header>
             <?php include "templates/intro1.inc.php"; ?>
             <div class="align-self-center">
-                <?php if(!empty($population) && !empty($country)){ ?>
+                <?php if(!empty($date) && !empty($fully_vaccinated) && !empty($total_vaccination) && !empty($country)) {?>
                 <div class="col-lg-12 col-md-12 my-4 align-self-center">
                     <div class="d-flex justify-content-center">
-                        <h1>Population of <?php echo $country; ?> has been updated!</h1>          
+                        <h1>Vaccination data of <?php echo $country; ?> has been insert!</h1>          
                     </div>
                     <div class="d-flex justify-content-center">
-                        <h2><?php echo $country ?> updated population is <?php echo $population; ?></h2>
+                        <h2>The total number of vaccination as per on <?php echo $formatteddate ?> is <?php echo $total_vaccination ?></h2>  
                     </div>
                     <br>
                     <div class="d-flex justify-content-center">
-                        <a href="edit_population.php" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Back to edit more country</a>
+                        <h2>The total number of fully vaccinated personnel as per on <?php echo $formatteddate ?> is <?php echo $total_vaccination ?></h2>
                     </div>
                     <br>
                     <div class="d-flex justify-content-center">
                         <a href="index.php" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Home</a>
+                        &nbsp;
+                        <a href="insert_vaccination_status.php" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Back to add more data</a>
                     </div>
                 </div>
                 <?php }
