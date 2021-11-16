@@ -5,8 +5,7 @@
         $iso_code = $_GET['next'];
     }
 
-    $stmt = $conn->prepare("SELECT country_name FROM country WHERE 
-    iso_code = ?;");
+    $stmt = $conn->prepare("SELECT country_name FROM country WHERE iso_code = ?;");
     $stmt->bind_param("s", $iso_code);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -153,7 +152,7 @@
                             </th>
                         </tbody>
                     </table>
-                    <br>
+                    <p style="text-align: center;">Data Up To Date As of: 30th July 2021<br></p>
                     <div class="d-flex justify-content-center">
                         <a href="process_index.php?next=<?php echo $iso_code; ?>" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Back</a>
                         <a href="index.php" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Home</a>

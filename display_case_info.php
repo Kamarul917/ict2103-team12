@@ -18,14 +18,13 @@
     $active_cases = $row["active_cases"];
     $population = $row["population"];
     
-    $stmt = $conn->prepare("SELECT category FROM travel_category
-    WHERE iso_code = ? ");
-    $stmt->bind_param("s", $iso_code);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $row = $result->fetch_assoc();
+    $stmt2 = $con1->prepare("SELECT category FROM travel_category WHERE iso_code = ? ");
+    $stmt2->bind_param("s", $iso_code);
+    $stmt2->execute();
+    $result2 = $stmt2->get_result();
+    $row2 = $result2->fetch_assoc();
     
-    $category = $row["category"];
+    $category = $row2["category"];
 
     function sigFig($value, $digits){
     if ($value == 0){
@@ -39,9 +38,10 @@
     $answer = round($value, $decimalPlaces);
     return $answer;
     }
-
+    
     $percentOfPopulationInfected = sigFig((($active_cases + $serious_cases) / $population * 100), 3);
     $ratioOfSeriousToActive = sigFig((($serious_cases/$active_cases) * 100), 3);
+    $ratioOfActiveToTotalPopulation = sigFig(($active_cases/$population), 3);
 
 
     //global $errorMsg, $dbhost, $dbaccount, $dbpw, $db;
@@ -119,6 +119,7 @@
                                 <td>
                                     <?php
                                         echo $category;
+                                        echo $active_cases.":".$population;
                                         switch($category)
                                         {
                                             case 1:  echo " - Generally safe";
@@ -153,6 +154,10 @@
                             <tr>
                                 <th scope="row">Ratio of serious case to active case: </th>
                                 <td> <?php echo $ratioOfSeriousToActive; ?> </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Ratio of active case to total population: </th>
+                                <td> <?php echo "1:".$ratioOfActiveToTotalPopulation; ?> </td>
                             </tr>
                         </tbody>
                     </table>
