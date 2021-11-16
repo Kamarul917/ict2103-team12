@@ -82,8 +82,8 @@ if (isset($_GET['next'])){
                         </div> <!-- form-group// -->
                     </form>
                 </div>
-                
-            <?php } else { 
+            <?php 
+            } else { 
 
                 echo "<h2>Oops!</h2>";
                 echo "<h4>The following error was detected:</h4>";

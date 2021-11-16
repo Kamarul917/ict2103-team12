@@ -10,10 +10,7 @@ include 'config.php';
     </head>
     <?php include "templates/nav.inc.php"; ?>
     <body>
-        
         <main>
-                
-            
             <header>
                 
             </header>
@@ -64,7 +61,6 @@ include 'config.php';
                                     </div> <!-- form-group// -->                                               
                 </form>
             </div> <!-- card-body end .// -->
-            
         </main>
         <?php include "templates/footer.inc.php"; ?>
     </body>

@@ -17,6 +17,15 @@
     $death_cases = $row["death_cases"];
     $active_cases = $row["active_cases"];
     $population = $row["population"];
+    
+    $stmt = $conn->prepare("SELECT category FROM travel_category
+    WHERE iso_code = ? ");
+    $stmt->bind_param("s", $iso_code);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    
+    $category = $row["category"];
 
     function sigFig($value, $digits){
     if ($value == 0){
@@ -105,6 +114,26 @@
                         <thead>
                         </thead>
                         <tbody>
+                            <tr>
+                                <th scope="row">MOH categorization: </th>
+                                <td>
+                                    <?php
+                                        echo $category;
+                                        switch($category)
+                                        {
+                                            case 1:  echo " - Generally safe";
+                                                     break;
+                                            case 2:  echo " - Exercise caution";
+                                                     break;
+                                            case 3:  echo " - Exercise heighten caution";
+                                                     break;
+                                            default: echo " - Not advisable";
+                                                     break;
+                                        }
+                                        
+                                    ?>
+                                </td>
+                            </tr>
                             <tr>
                                 <th scope="row">Total Number of Cases: </th>
                                 <td> <?php echo $active_cases; ?> </td>
