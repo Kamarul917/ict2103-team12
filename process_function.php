@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $success = false;
     } else {
         $selFunc = ($_POST["slct2"]);
-        echo "$selFuc";
+        echo "$selFunc";
     }
 }
 
