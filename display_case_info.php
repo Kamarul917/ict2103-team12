@@ -119,7 +119,6 @@
                                 <td>
                                     <?php
                                         echo $category;
-                                        echo $active_cases.":".$population;
                                         switch($category)
                                         {
                                             case 1:  echo " - Generally safe";
@@ -157,7 +156,7 @@
                             </tr>
                             <tr>
                                 <th scope="row">Ratio of active case to total population: </th>
-                                <td> <?php echo "1:".$ratioOfActiveToTotalPopulation; ?> </td>
+                                <td> <?php echo "1 : ".$ratioOfActiveToTotalPopulation; ?> </td>
                             </tr>
                         </tbody>
                     </table>
