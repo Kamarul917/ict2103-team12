@@ -54,7 +54,7 @@ if(isset($_POST['iso_code'])) {
                         break;
                     case 8:
                         header("location: display_death_serious_graph.php?next=$iso_code");
-                    
+                        break;
                     default:
                         header("location: display_case_info.php?next=$iso_code");
                 }
