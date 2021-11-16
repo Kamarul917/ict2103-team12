@@ -29,6 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($success) {
         if (($adminuserID == "admin") && ($adminpwd == "123")){
             $trueSuccess = true;
+            $_SESSION['admin'] = "admin";
         } else {
             $errorMsg .= "Username or password entered is incorrect.";
             $trueSuccess = false;
@@ -49,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Employee Login | BLITZ Festival 2021</title>
+        <title>Admin Login | iCovidTravel</title>
         <?php
         include "templates/head2.inc.php";
         ?>

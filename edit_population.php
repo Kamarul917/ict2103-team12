@@ -1,4 +1,14 @@
 <?php
+session_start();
+?>
+<?php
+if (!isset($_SESSION["admin"])) {
+    header("location: admin_login.php");
+} else {
+    $Admin = $_SESSION['admin'];
+}
+?>
+<?php
     include 'db/connect.php';
 ?>
 <!DOCTYPE html>

@@ -1,5 +1,5 @@
 <?php
-
+ob_start();
 include 'config.php';
 //// Define and initialize global variables:
 $country = $selFunc = $errorMsg = "";
@@ -42,23 +42,28 @@ if(isset($_POST['iso_code'])) {
                 switch ($selFunc){
                     case 3:
                         header("location: display_case_info.php?next=$iso_code");
+                        ob_end_flush();
                         break;
                     case 4:
                         header("location: display_vaccine_info.php?next=$iso_code");
+                        ob_end_flush();
                         break;
                     case 6:
                         header("location: display_daliy_vaccine_graph.php?next=$iso_code");
+                        ob_end_flush();
                         break;
                     case 7:
                         header("location: display_active_cases_graph.php?next=$iso_code");
+                        ob_end_flush();
                         break;
                     case 8:
                         header("location: display_death_serious_graph.php?next=$iso_code");
+                        ob_end_flush();
                         break;
                     default:
                         header("location: display_case_info.php?next=$iso_code");
-                }
-//      
+                        ob_end_flush();
+                }    
                 
               } else { 
                 echo "<?php include 'templates/intro1.inc.php'; ?>";

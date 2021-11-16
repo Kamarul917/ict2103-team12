@@ -17,7 +17,7 @@
                     <div class="col-md-6">
                         <div class="card mt-4">
                             <header class="card-header">
-                                <h1 style="font-size: 2rem;" class="card-title mt-2">Employee Login</h1>
+                                <h1 style="font-size: 2rem;" class="card-title mt-2">Admin Login</h1>
                             </header>
                             <div class="card-body">
                                 <form action="adminPage.php" method="post">

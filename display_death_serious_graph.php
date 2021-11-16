@@ -115,7 +115,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 });
 chart.render();
  
-}
+};
 </script>
         
 <?php include "templates/head.inc.php"; ?>
