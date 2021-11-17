@@ -51,6 +51,7 @@
 
 ?>
 <!DOCTYPE html>
+<?php include "templates/nav.inc.php"; ?>
 <html lang="en">
     <head>
         <title>iCovidTravel</title>
@@ -96,7 +97,6 @@
         <?php include "templates/head.inc.php"; ?>
         
     </head>
-    <?php include "templates/nav.inc.php"; ?>
 
     <body>
         <main>

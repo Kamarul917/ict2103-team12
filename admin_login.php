@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+        include "templates/nav.inc.php";
+        ?>
 <html lang="en">
     <head>
         <title>Employee Login | iCovidTravel</title>
@@ -8,9 +11,6 @@
         <link rel="stylesheet" href="css/account.css">
     </head>
     <body>
-        <?php
-        include "templates/nav.inc.php";
-        ?>
         <main>
             <div class="container mt-5">
                 <div class="row justify-content-center">

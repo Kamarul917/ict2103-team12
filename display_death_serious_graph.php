@@ -52,6 +52,7 @@ $ratioOfSeriousToActive = sigFig((($serious_cases / $active_cases) * 100), 3);
 //include "connection_settings.php";
 ?>
 <!DOCTYPE html>
+<?php include "templates/nav.inc.php"; ?>
 <html lang="en">
     <head>
         <title>iCovidTravel</title>
@@ -102,8 +103,6 @@ $ratioOfSeriousToActive = sigFig((($serious_cases / $active_cases) * 100), 3);
    
 
     </head>
-<?php include "templates/nav.inc.php"; ?>
-
     <body>
         <main>
             <header>            

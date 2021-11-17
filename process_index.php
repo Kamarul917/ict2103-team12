@@ -35,6 +35,9 @@ if (isset($_GET['next'])){
     }
 ?>
 <!DOCTYPE html>
+<?php
+        include "templates/nav.inc.php";
+        ?>
 <html lang="en">
     <head>
         <title>Selected Country</title>
@@ -43,9 +46,7 @@ if (isset($_GET['next'])){
         include "templates/head.inc.php";
         ?>
     </head>
-    <?php
-        include "templates/nav.inc.php";
-        ?>
+    
     <body>
         <main>
             <hr>

@@ -22,6 +22,9 @@ if(isset($_POST['iso_code'])) {
     }
 ?>
 <!DOCTYPE html>
+<?php
+        include "templates/nav.inc.php";
+        ?>
 <html lang="en">
     <head>
         <title>Selected Function</title>
@@ -30,9 +33,6 @@ if(isset($_POST['iso_code'])) {
         include "templates/head.inc.php";
         ?>
     </head>
-    <?php
-        include "templates/nav.inc.php";
-        ?>
     <body>
         <main>
             <hr>

@@ -1,6 +1,5 @@
-<?php
-session_start();
-?>
+<!DOCTYPE html>
+<?php include "templates/nav.inc.php"; ?>
 <?php
 if (!isset($_SESSION["admin"])) {
     header("location: admin_login.php");
@@ -11,7 +10,6 @@ if (!isset($_SESSION["admin"])) {
 <?php
     include 'db/connect.php';
 ?>
-<!DOCTYPE html>
 <html lang="en">
     <head>
         <title>iCovidTravel</title>
@@ -70,7 +68,6 @@ if (!isset($_SESSION["admin"])) {
         </script>
         
     </head>
-    <?php include "templates/nav.inc.php"; ?>
 
     <body>
         <main>
