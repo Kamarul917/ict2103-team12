@@ -95,28 +95,7 @@ $ratioOfSeriousToActive = sigFig((($serious_cases / $active_cases) * 100), 3);
         <!--Custom JS -->
         <script defer src="js/index.js"></script>
         
-        <script>
-window.onload = function() {
- 
-var chart = new CanvasJS.Chart("chartContainer", {
-	theme: "light2",
-	animationEnabled: true,
-	title: {
-		
-	},
-	data: [{
-		type: "doughnut",
-		indexLabel: "{symbol} - {y}",
-		
-		showInLegend: true,
-		legendText: "{label} : {y}",
-		dataPoints: <?php echo json_encode($data, JSON_NUMERIC_CHECK); ?>
-	}]
-});
-chart.render();
- 
-};
-</script>
+       
         
 <?php include "templates/head.inc.php"; ?>
 
@@ -170,3 +149,25 @@ while ($row = mysqli_fetch_array($result)) {
         </main>
 
     </body>
+ <script>
+window.onload = function() {
+ 
+var chart = new CanvasJS.Chart("chartContainer", {
+	theme: "light2",
+	animationEnabled: true,
+	title: {
+		
+	},
+	data: [{
+		type: "doughnut",
+		indexLabel: "{symbol} - {y}",
+		
+		showInLegend: true,
+		legendText: "{label} : {y}",
+		dataPoints: <?php echo json_encode($data, JSON_NUMERIC_CHECK); ?>
+	}]
+});
+chart.render();
+ 
+};
+</script>

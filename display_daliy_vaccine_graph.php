@@ -96,42 +96,7 @@
         <!--Custom JS -->
         <script defer src="js/index.js"></script>
         <?php include "templates/head.inc.php"; ?>
-        <script>
-                    window.onload = function () {
-
-                        var chart = new CanvasJS.Chart("chartContainer", {
-                            animationEnabled: true,
-                            //theme: "light2",
-                            title: {
-
-                            },
-                            axisX: {
-                                crosshair: {
-                                    enabled: true,
-                                    snapToDataPoint: true
-                                }
-                            },
-                            axisY: {
-                                title: "population",
-                                includeZero: true,
-                                crosshair: {
-                                    enabled: true,
-                                    snapToDataPoint: true
-                                }
-                            },
-                            toolTip: {
-                                enabled: false
-                            },
-                            data: [{
-                                    type: "area",
-                                    dataPoints: <?php echo json_encode($data, JSON_NUMERIC_CHECK); ?>
-                                }]
-                        });
-                        chart.render();
-
-                    }
-        </script>
-
+      
     </head>
     <?php include "templates/nav.inc.php"; ?>
     <body>
@@ -179,3 +144,38 @@ while ($row = mysqli_fetch_array($result)) {
         </main>
 
     </body>
+      <script>
+                    window.onload = function () {
+
+                        var chart = new CanvasJS.Chart("chartContainer", {
+                            animationEnabled: true,
+                            //theme: "light2",
+                            title: {
+
+                            },
+                            axisX: {
+                                crosshair: {
+                                    enabled: true,
+                                    snapToDataPoint: true
+                                }
+                            },
+                            axisY: {
+                                title: "population",
+                                includeZero: true,
+                                crosshair: {
+                                    enabled: true,
+                                    snapToDataPoint: true
+                                }
+                            },
+                            toolTip: {
+                                enabled: false
+                            },
+                            data: [{
+                                    type: "area",
+                                    dataPoints: <?php echo json_encode($data, JSON_NUMERIC_CHECK); ?>
+                                }]
+                        });
+                        chart.render();
+
+                    }
+        </script>
