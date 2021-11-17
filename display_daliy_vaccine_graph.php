@@ -1,53 +1,56 @@
 <?php
-include 'config.php';
+    include 'config.php';
 
-if (isset($_GET['next'])) {
-    $iso_code = $_GET['next'];
-}
-
-$data = [];
-$sqli = "SELECT * FROM vaccination_status where iso_code = '$iso_code'";
-$result = mysqli_query($conn, $sqli);
-while ($row = mysqli_fetch_array($result)) {
-    if ($row['fully_vaccination'] != 0) {
-        array_push($data, array("label" => $row['date'], "y" => $row['fully_vaccination']));
+    if (isset($_GET['next'])){
+        $iso_code = $_GET['next'];
     }
-}
 
+    $data = [];
+    
+    $sqli = $conn->prepare("SELECT * FROM vaccination_status where iso_code = ?;");
+    $sqli->bind_param("s", $iso_code);
+    $sqli->execute();
+    $result = $sqli->get_result();
 
-$stmt = $conn->prepare("SELECT country_name, serious_cases, death_cases, active_cases, population FROM covid_data, country 
+    while($row2 = $result->fetch_assoc()){
+        if ($row2['fully_vaccination'] != 0) {
+            array_push($data, array("label" => $row2['date'], "y" => $row2['fully_vaccination']));
+        }
+    }
+
+    $stmt = $conn->prepare("SELECT country_name, serious_cases, death_cases, active_cases, population FROM covid_data, country 
     WHERE covid_data.iso_code = country.iso_code and covid_data.iso_code = ? ");
-$stmt->bind_param("s", $iso_code);
-$stmt->execute();
-$result = $stmt->get_result();
-$row = $result->fetch_assoc();
+    $stmt->bind_param("s", $iso_code);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
 
-$serious_cases = $row["serious_cases"];
-$country_name = $row["country_name"];
-$death_cases = $row["death_cases"];
-$active_cases = $row["active_cases"];
-$population = $row["population"];
+    $serious_cases = $row["serious_cases"];
+    $country_name = $row["country_name"];
+    $death_cases = $row["death_cases"];
+    $active_cases = $row["active_cases"];
+    $population = $row["population"];
 
-function sigFig($value, $digits) {
-    if ($value == 0) {
-        $decimalPlaces = $digits - 1;
-    } elseif ($value < 0) {
-        $decimalPlaces = $digits - floor(log10($value * -1)) - 1;
-    } else {
-        $decimalPlaces = $digits - floor(log10($value)) - 1;
+    function sigFig($value, $digits) {
+        if ($value == 0) {
+            $decimalPlaces = $digits - 1;
+        } elseif ($value < 0) {
+            $decimalPlaces = $digits - floor(log10($value * -1)) - 1;
+        } else {
+            $decimalPlaces = $digits - floor(log10($value)) - 1;
+        }
+
+        $answer = round($value, $decimalPlaces);
+        return $answer;
     }
 
-    $answer = round($value, $decimalPlaces);
-    return $answer;
-}
-
-$percentOfPopulationInfected = sigFig((($active_cases + $serious_cases) / $population * 100), 3);
-$ratioOfSeriousToActive = sigFig((($serious_cases / $active_cases) * 100), 3);
+    $percentOfPopulationInfected = sigFig((($active_cases + $serious_cases) / $population * 100), 3);
+    $ratioOfSeriousToActive = sigFig((($serious_cases / $active_cases) * 100), 3);
 
 
-//global $errorMsg, $dbhost, $dbaccount, $dbpw, $db;
-//set the db connection info here
-//include "connection_settings.php";
+    //global $errorMsg, $dbhost, $dbaccount, $dbpw, $db;
+    //set the db connection info here
+    //include "connection_settings.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -92,8 +95,7 @@ $ratioOfSeriousToActive = sigFig((($serious_cases / $active_cases) * 100), 3);
 
         <!--Custom JS -->
         <script defer src="js/index.js"></script>
-<?php include "templates/head.inc.php"; ?>
-
+        <?php include "templates/head.inc.php"; ?>
         <script>
                     window.onload = function () {
 
@@ -131,8 +133,7 @@ $ratioOfSeriousToActive = sigFig((($serious_cases / $active_cases) * 100), 3);
         </script>
 
     </head>
-<?php include "templates/nav.inc.php"; ?>
-
+    <?php include "templates/nav.inc.php"; ?>
     <body>
         <main>
             <header>            
