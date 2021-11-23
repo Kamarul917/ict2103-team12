@@ -82,7 +82,7 @@ if (!isset($_SESSION["admin"])) {
                         </div>
                         <br>
                         <div class="d-flex justify-content-center">
-                            <input type="submit" id="name-submit" value="Grab">
+                            <input type="submit" class="btn btn-info mr-2" id="name-submit" value="Grab">
                             <form action="edit_population_process.php" method="post">
                                 <div class="form-group">
                                     <label for="country">Select a Country:</label>
